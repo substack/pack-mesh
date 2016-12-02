@@ -52,5 +52,19 @@ module.exports = function (mesh, opts) {
     }
   }
   buffers.push(vbuf)
+  var csize = clen >= 65536 ? 4 : 2
+  var cbuf = alloc((clen+1)*cdim*csize), cix = 0
+  for (var i = 0; i < clen; i++) {
+    var c = mesh.cells[i]
+    if (c.length !== cdim) throw new Error('mixed cell dimension')
+    for (var j = 0; j < cdim; j++) {
+      if (csize === 2) {
+        cbuf.writeUInt16BE(c[j],cix+=csize)
+      } else if (csize === 4) {
+        cbuf.writeUInt32BE(c[j],cix+=csize)
+      }
+    }
+  }
+  buffers.push(cbuf)
   return Buffer.concat(buffers)
 }
