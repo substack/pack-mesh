@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 var minimist = require('minimist')
 var argv = minimist(process.argv.slice(2), {
-  alias: { u: 'unpack', b: 'bits' },
-  number: [ 'bits' ],
+  alias: { u: 'unpack', t: 'type' },
+  number: [ 'type' ],
   boolean: ['unpack']
 })
 var fs = require('fs')
