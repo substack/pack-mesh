@@ -18,6 +18,7 @@ if (argv.unpack) {
   }))
 } else {
   input.pipe(concat({ encoding: 'string' }, function (body) {
-    process.stdout.write(packer.pack(JSON.parse(body),argv))
+    var buf = Buffer(packer.pack(JSON.parse(body),argv))
+    process.stdout.write(buf)
   }))
 }
