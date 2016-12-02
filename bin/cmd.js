@@ -14,7 +14,8 @@ var input = argv._[0] === '-' || argv._.length === 0
   : fs.createReadStream(argv._[0])
 
 if (argv.unpack) {
-  input.pipe(concat(function (body) {
+  input.pipe(concat(function (buf) {
+    console.log(JSON.stringify(packer.unpack(buf)))
   }))
 } else {
   input.pipe(concat({ encoding: 'string' }, function (body) {
