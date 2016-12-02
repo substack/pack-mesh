@@ -1,12 +1,29 @@
 {
   "name": "pack-mesh",
+  "version": "1.0.0",
+  "main": "index.js",
   "bin": {
     "pack-mesh": "bin/cmd.js"
   },
   "dependencies": {
-    "buffer-alloc": "^1.1.0",
-    "buffer-from": "^0.1.1",
     "concat-stream": "^1.5.2",
     "minimist": "^1.2.0"
-  }
+  },
+  "description": "pack a simplicial-complex mesh into a binary format",
+  "keywords": [
+    "simplicial complex",
+    "binary",
+    "compress",
+    "mesh"
+  ],
+  "author": "substack",
+  "license": "BSD",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/substack/pack-mesh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/substack/pack-mesh/issues"
+  },
+  "homepage": "https://github.com/substack/pack-mesh#readme"
 }
