@@ -1,0 +1,7 @@
+usage: pack-mesh FILE {OPTIONS}
+
+  -t --type    Set a vertex precision: s8 s16 f32 f64
+  -u --unpack  Turn binary data into simplicial complex json
+
+If FILE is not provided or is "-", read from stdin.
+

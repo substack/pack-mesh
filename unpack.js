@@ -2,7 +2,8 @@ var vfmtcodes = require('./vfmtcodes.json')
 var vsizes = require('./vsizes.json')
 
 module.exports = function (buf) {
-  var abuf = new ArrayBuffer(buf.length)
+  var abuf = buf.constructor.name === 'ArrayBuffer'
+    ? buf : new ArrayBuffer(buf.length)
   var dv = new DataView(abuf)
   for (var i = 0; i < buf.length; i++) {
     dv.setUint8(i,buf[i])
@@ -42,6 +43,17 @@ module.exports = function (buf) {
       mesh.positions[i] = []
       for (var j = 0; j < vdim; j++) {
         mesh.positions[i][j] = dv.getFloat64(offset)
+        offset += vsize
+      }
+    }
+  } else if (vfmt === 's8') {
+    var min = -Math.pow(2,7), max = Math.pow(2,7)-1
+    for (var i = 0; i < vlen; i++) {
+      mesh.positions[i] = []
+      for (var j = 0; j < vdim; j++) {
+        var n = dv.getInt8(offset)
+        var r = extents[j][1]-extents[j][0]
+        mesh.positions[i][j] = (n-min)/(max-min)*r+extents[j][0]
         offset += vsize
       }
     }
