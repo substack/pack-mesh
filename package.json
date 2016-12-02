@@ -1,0 +1,12 @@
+{
+  "name": "pack-mesh",
+  "bin": {
+    "pack-mesh": "bin/cmd.js"
+  },
+  "dependencies": {
+    "buffer-alloc": "^1.1.0",
+    "buffer-from": "^0.1.1",
+    "concat-stream": "^1.5.2",
+    "minimist": "^1.2.0"
+  }
+}
